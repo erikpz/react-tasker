@@ -18,6 +18,40 @@ function ThemeConfig({ children }: any) {
     shadows: shdw,
     typography,
     shape: borderRadius,
+    overrides: {
+      MuiButton: {
+        root: {
+          "&:hover": {
+            boxShadow: "none",
+          },
+        },
+        sizeLarge: {
+          height: 48,
+        },
+        contained: {
+          color: paltt.common.white,
+          boxShadow: shdw[25].primary,
+          backgroundColor: paltt.primary.main,
+          "&:hover": {
+            backgroundColor: paltt.primary.dark,
+          },
+        },
+        containedPrimary: {
+          boxShadow: shdw[25].primary,
+        },
+        outlined: {
+          border: `1px solid ${paltt.grey[500_32]}`,
+          "&:hover": {
+            backgroundColor: paltt.action.hover,
+          },
+        },
+        text: {
+          "&:hover": {
+            backgroundColor: paltt.action.hover,
+          },
+        },
+      },
+    },
   });
 
   return (

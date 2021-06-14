@@ -17,7 +17,7 @@ const responsiveFontSizes = ({ sm, md, lg }: any) => {
   };
 };
 
-const FONT_PRIMARY = "Be Vietnam, sans-serif"; // Google Font
+const FONT_PRIMARY = "Poppins, sans-serif"; // Google Font
 // const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font
 
 const typography = {
@@ -93,8 +93,7 @@ const typography = {
   button: {
     fontWeight: 700,
     lineHeight: 24 / 14,
-    fontSize: pxToRem(14),
-    textTransform: "capitalize" as any,
+    fontSize: pxToRem(14)
   },
 };
 
