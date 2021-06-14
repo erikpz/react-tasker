@@ -1,3 +1,15 @@
+interface GenericServiceParams {
+  endpoint: string;
+  body?: object;
+  hasAuthToken?: boolean;
+}
+
+interface APIResponse {
+  data: any;
+  ok: boolean;
+  status: number;
+}
+
 interface UserDetailsContext {
   id: string;
   name: string;
@@ -10,4 +22,5 @@ interface UserDetailsContext {
 
 interface InitialStateUserContext {
   userDetails: UserDetailsContext;
+  themeMode: "light" | "dark";
 }

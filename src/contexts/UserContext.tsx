@@ -1,5 +1,4 @@
 import React, {
-  Children,
   createContext,
   Dispatch,
   FC,
@@ -8,6 +7,7 @@ import React, {
 import { userReducer } from "./reducers/userReducer";
 
 export const initialState: InitialStateUserContext = {
+  themeMode: 'light',
   userDetails: {
     id: "",
     name: "",

@@ -4,7 +4,7 @@ import { Box, Typography } from "@material-ui/core";
 export const LoginPage = () => {
   return (
     <Box>
-      <Typography>Login</Typography>
+      <Typography>Logisdgn</Typography>
     </Box>
   );
 };

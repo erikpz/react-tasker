@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { LoginPage } from "./auth/LoginPage";
+import { LoginPage } from "../LoginPage";
 
 const AuthRoot: FC = () => {
   return (
@@ -12,3 +12,4 @@ const AuthRoot: FC = () => {
 };
 
 export default AuthRoot;
+ 

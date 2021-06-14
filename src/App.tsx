@@ -1,17 +1,25 @@
-import React from "react";
+import React, { FC } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import AuthRoot from "./pages/AuthRoot";
+import PrivateRoutes from "./components/PrivateRoutes";
+import { UserProvider } from "./contexts/UserContext";
+import AuthRoot from "./pages/auth/components/AuthRoot";
+import ThemeConfig from "./theme/ThemeConfig";
 
-function App() {
+const App: FC = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/auth/*" element={<AuthRoot />} />
-        <Route path="/404" element={<p>404</p>} />
-        <Route path="*" element={<Navigate to="/404" />} />
-      </Routes>
+      <UserProvider>
+        <ThemeConfig>
+          <Routes>
+            <Route path="/auth/*" element={<AuthRoot />} />
+            <PrivateRoutes path='/*' element={<p>HOME</p>}/>
+            <Route path="/404" element={<p>404</p>} />
+            <Route path="*" element={<Navigate to="/404" />} />
+          </Routes>
+        </ThemeConfig>
+      </UserProvider>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
