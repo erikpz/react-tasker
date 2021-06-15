@@ -1,20 +1,32 @@
 import React from "react";
 import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { useLocation } from "react-router";
 
 export const FormCover = () => {
   const classes = useStyles();
+  const location = useLocation();
+  const loginLoc = location.pathname === "/auth/sign-in";
   return (
-    <Box className={classes.illustrationContainer}>
+    <Box
+      className={classes.illustrationContainer}
+      style={{
+        backgroundImage: loginLoc
+          ? "url(/images/login_form.jpg)"
+          : "url(/images/register_form.jpg)",
+      }}
+    >
       <Box className={classes.titleContainer}>
         <Typography variant="h1" align="center" className={classes.title}>
-          HOLA, TASKER!
+          {loginLoc ? "Hola, Tasker!" : "Conviértete en Tasker"}
         </Typography>
         <Typography
           variant="subtitle2"
           align="center"
           className={classes.subtitle}
         >
-          Organiza tus tareas, ahora.
+          {loginLoc
+            ? " Organiza tus tareas, ahora."
+            : "Empieza a ordenar tus tareas."}
         </Typography>
       </Box>
     </Box>
@@ -25,9 +37,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   illustrationContainer: {
     height: "100%",
     width: "100%",
-    backgroundImage: "url(/images/form_cover.jpg)",
     backgroundSize: "cover",
-    overflow:'hidden'
+    overflow: "hidden",
   },
   titleContainer: {
     backgroundColor: "rgb(255,255,255,.0)",

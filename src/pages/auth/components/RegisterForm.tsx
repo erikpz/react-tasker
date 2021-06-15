@@ -19,7 +19,7 @@ import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
   const classes = useStyles();
   const theme = useTheme();
   const navigate = useNavigate();
@@ -29,9 +29,9 @@ export const LoginForm = () => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<InputsLogin>();
+  } = useForm<InputsRegister>();
 
-  const handleLogin = async (formData: InputsLogin) => {
+  const handleLogin = async (formData: InputsRegister) => {
     setloading(true);
     const authService = AuthService.getInstance();
     const response = await authService.login(formData);
@@ -53,13 +53,33 @@ export const LoginForm = () => {
 
   return (
     <form className={classes.formContainer}>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} style={{ height: "100%" }}>
         <Grid item xs={12} /* style={{ backgroundColor: "lightcoral" }} */>
           <Typography variant="h3" align="center" style={{ marginBottom: 20 }}>
-            Inicia Sesión
+            Regístrate
           </Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            variant="outlined"
+            label="Nombre"
+            error={!!errors.name?.type}
+            className={classes.textField}
+            {...register("name", { required: true })}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            variant="outlined"
+            label="Apellidos"
+            error={!!errors.lastName?.type}
+            className={classes.textField}
+            {...register("lastName", { required: true })}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
           <TextField
             fullWidth
             variant="outlined"
@@ -67,6 +87,36 @@ export const LoginForm = () => {
             error={!!errors.userName?.type}
             className={classes.textField}
             {...register("userName", { required: true })}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            variant="outlined"
+            label="Teléfono"
+            error={!!errors.phoneNumber?.type}
+            className={classes.textField}
+            {...register("phoneNumber", { required: true })}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            variant="outlined"
+            label="E-mail"
+            error={!!errors.email?.type}
+            className={classes.textField}
+            {...register("email", { required: true })}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            variant="outlined"
+            label="URL Foto"
+            error={!!errors.profilePhotoUrl?.type}
+            className={classes.textField}
+            {...register("profilePhotoUrl", { required: true })}
           />
         </Grid>
         <Grid item xs={12}>
@@ -112,7 +162,7 @@ export const LoginForm = () => {
             type="submit"
             onClick={handleSubmit(handleLogin)}
           >
-            {loading ? <CircularProgress size={20} /> : "Iniciar sesión"}
+            {loading ? <CircularProgress size={20} /> : "Registrarse"}
           </Button>
         </Grid>
         <Grid item xs={12}>
@@ -131,7 +181,8 @@ export const LoginForm = () => {
               align="center"
               style={{ color: theme.palette.grey[700] }}
             >
-              Regístrate. <Link to="/auth/sign-up">Aquí.</Link>
+              ¿Ya tiene una cuenta?{" "}
+              <Link to="/auth/sign-in">Inicia sesión.</Link>
             </Typography>
           </Box>
         </Grid>
@@ -146,7 +197,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: 50,
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     [theme.breakpoints.down("sm")]: {
       padding: 20,
     },
@@ -155,7 +205,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   loginButton: {
     maxWidth: 400,
     display: "block",
-
     margin: "15px auto",
     height: 56,
   },

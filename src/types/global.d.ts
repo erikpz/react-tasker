@@ -24,3 +24,18 @@ interface InitialStateUserContext {
   userDetails: UserDetailsContext;
   themeMode: "light" | "dark";
 }
+
+interface InputsLogin {
+  userName: string;
+  password: string;
+}
+
+interface InputsRegister {
+  userName: string;
+  password: string;
+  name: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  profilePhotoUrl: string;
+}
