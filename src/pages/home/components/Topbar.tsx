@@ -7,6 +7,7 @@ import {
   Toolbar,
   IconButton,
   Theme,
+  Typography,
 } from "@material-ui/core";
 import { alpha } from "../../../utils/helpers";
 import { Menu } from "@material-ui/icons";
@@ -32,6 +33,9 @@ const TopBar = (props: any) => {
             <Menu/>
           </IconButton>
         </Hidden> */}
+        <Box>
+          <Typography variant='h5' style={{fontStyle:'oblique'}}>TASKER.</Typography>
+        </Box>
         <Box style={{ flexGrow: 1 }}></Box>
         <Box className={classes.rightMenu}>
           <Account />
@@ -46,9 +50,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: "none",
     backdropFilter: "blur(8px)",
     backgroundColor: alpha(theme.palette.background.default, 0.7),
-    [theme.breakpoints.up("lg")]: {
+    /* [theme.breakpoints.up("lg")]: {
       paddingLeft: DRAWER_WIDTH,
-    },
+    }, */
   },
   toolbar: {
     color: "black",

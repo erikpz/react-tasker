@@ -23,3 +23,25 @@ export function remToPx(value: string) {
 export function pxToRem(value: number) {
   return `${value / 16}rem`;
 }
+
+export const formatStatus = (stat: "Nueva" | "En proceso" | "Completada") => {
+  switch (stat) {
+    case "Nueva":
+      return "new";
+    case "En proceso":
+      return "process";
+    case "Completada":
+      return "done";
+  }
+};
+
+export const formatStatusReverse = (stat: "new" | "process" | "done") => {
+  switch (stat) {
+    case "new":
+      return "Nueva";
+    case "process":
+      return "En proceso";
+    case "done":
+      return "Completada";
+  }
+};

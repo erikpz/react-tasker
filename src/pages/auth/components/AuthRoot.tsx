@@ -11,7 +11,7 @@ const AuthRoot: FC = () => {
       <Routes>
         <Route path="/sign-in" element={<LoginPage />} />
         <Route path="/sign-up" element={<RegisterPage />} />
-        <Route path="*" element={<Navigate to="/404" />} />
+        <Route path="*" element={<Navigate to="/auth/sign-in" />} />
       </Routes>
     </div>
   );

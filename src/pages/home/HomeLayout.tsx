@@ -7,7 +7,7 @@ import { UserService } from "../../services/UserService";
 import { setUser, unsetUser } from "../../contexts/actions/userActions";
 import TopBar from "./components/Topbar";
 
-const APP_BAR_MOBILE = 64;
+const APP_BAR_MOBILE = 92;
 
 const HomeLayout = ({ children }: any) => {
   const classes = useStyles();
@@ -65,11 +65,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   main: {
     flexGrow: 1,
     overflow: "auto",
-    minHeight: "100%",
+    maxHeight: "100%",
     paddingTop: APP_BAR_MOBILE,
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4),
+    paddingLeft: theme.spacing(5),
+    paddingRight: theme.spacing(5),
     paddingBottom: theme.spacing(10),
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3),
+      paddingTop: theme.spacing(10),
+      paddingBottom: theme.spacing(5),
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      paddingTop: theme.spacing(10),
+      paddingBottom: theme.spacing(5),
+    },
   },
 }));
 

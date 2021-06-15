@@ -40,3 +40,20 @@ interface InputsRegister {
   phoneNumber: string;
   profilePhotoUrl: string;
 }
+
+interface CreateTask {
+  title: string;
+  description: string;
+  status?: string | string[];
+}
+
+interface Task {
+  _id: string;
+  title: string;
+  description: string;
+  status: string;
+  author: string;
+  updatedAt: string;
+  createdAt: string;
+  __v?: number;
+}

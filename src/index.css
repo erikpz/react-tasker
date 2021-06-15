@@ -1,3 +1,7 @@
 body {
   margin: 0;
 }
+
+.swal2-container {
+  z-index: 70000000000;
+}

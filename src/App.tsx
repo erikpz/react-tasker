@@ -14,8 +14,8 @@ const App: FC = () => {
           <Routes>
             <Route path="/auth/*" element={<AuthRoot />} />
             <PrivateRoutes path="/*" element={<HomeRoot />} />
-            <Route path="/404" element={<p>404</p>} />
             <Route path="*" element={<Navigate to="/auth/" />} />
+            <Route path="/404" element={<p>404</p>} />
           </Routes>
         </ThemeConfig>
       </UserProvider>
