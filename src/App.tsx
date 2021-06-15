@@ -4,6 +4,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import { UserProvider } from "./contexts/UserContext";
 import AuthRoot from "./pages/auth/components/AuthRoot";
 import { HomeRoot } from "./pages/home/components/HomeRoot";
+import Page404View from "./pages/page404/Page404";
 import ThemeConfig from "./theme/ThemeConfig";
 
 const App: FC = () => {
@@ -15,7 +16,7 @@ const App: FC = () => {
             <Route path="/auth/*" element={<AuthRoot />} />
             <PrivateRoutes path="/*" element={<HomeRoot />} />
             <Route path="*" element={<Navigate to="/auth/" />} />
-            <Route path="/404" element={<p>404</p>} />
+            <Route path="/404" element={<Page404View />} />
           </Routes>
         </ThemeConfig>
       </UserProvider>
