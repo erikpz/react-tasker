@@ -12,9 +12,9 @@ export class UserService {
     return UserService.instance;
   }
 
-  async getUser(userName: string): Promise<APIResponse> {
+  async getUser(): Promise<APIResponse> {
     return GenericService.get({
-      endpoint: `/users/${userName}`,
+      endpoint: `/users`,
       hasAuthToken: true,
     });
   }

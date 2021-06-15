@@ -4,11 +4,10 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import { useNavigate } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
 import { UserService } from "../../services/UserService";
-import { setUser } from "../../contexts/actions/userActions";
-import jwt_decode from "jwt-decode";
+import { setUser, unsetUser } from "../../contexts/actions/userActions";
+import TopBar from "./components/Topbar";
 
 const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 92;
 
 const HomeLayout = ({ children }: any) => {
   const classes = useStyles();
@@ -25,44 +24,33 @@ const HomeLayout = ({ children }: any) => {
   };
 
   const fetchUserDetails = async () => {
-    /* if (localStorage.getItem("token")) {
-      const jwt = jwt_decode(localStorage.getItem("token") as string);
-      console.log(jwt);
-    } */
-    console.log(localStorage.getItem("token"));
-    /* const userService = UserService.getInstance();
+    const userService = UserService.getInstance();
     const response = await userService.getUser();
-    console.log(response); */
-    /* if (response.ok) {
-      const {
-        id,
-        email,
-        name,
-        lastName,
-        phoneNumber,
-        createdAt,
-        profilePhotoUrl,
-      } = response.data.data;
-      console.log(response.data.data);
-      usrctx.dispatch(setUser)
+    if (response.ok) {
+      usrctx.dispatch(setUser(response.data.data));
     } else if (response.status === 401) {
       console.log("Error", response);
-      usrctx.dispatch(unsetInfo());
+      usrctx.dispatch(unsetUser());
+      localStorage.removeItem("token");
       navigate("/auth");
     } else {
       console.log("Error", response);
-    } */
+    }
+    console.log(response);
   };
 
   useEffect(() => {
     fetchUserDetails();
   }, []);
 
+  useEffect(() => {
+    console.log(usrctx.state);
+  });
+
   return (
     <div className={classes.rootDashLayout}>
-      {/* <TopBar onOpenNav={onOpenNav} />
-      <NavBar onCloseNav={onCloseNav} isOpenNav={openNav} /> */}
-
+      <TopBar onOpenNav={onOpenNav} />
+      {/* <NavBar onCloseNav={onCloseNav} isOpenNav={openNav} /> */}
       <div className={classes.main}>{children}</div>
     </div>
   );
@@ -75,19 +63,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: "hidden",
   },
   main: {
-    /* backgroundColor: 'lightblue', */
     flexGrow: 1,
     overflow: "auto",
     minHeight: "100%",
-    paddingTop: APP_BAR_MOBILE + 40,
+    paddingTop: APP_BAR_MOBILE,
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(4),
     paddingBottom: theme.spacing(10),
-    [theme.breakpoints.up("lg")]: {
-      paddingTop: APP_BAR_DESKTOP + 40,
-      /* paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2), */
-    },
   },
 }));
 

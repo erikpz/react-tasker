@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   loginPage: {
     width: "90%",
     height: "90%",
+    maxWidth:1200,
     boxShadow: theme.shadows[19],
     borderRadius: theme.shape.borderRadius,
     overflow: "hidden",

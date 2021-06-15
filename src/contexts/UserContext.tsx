@@ -9,13 +9,14 @@ import { userReducer } from "./reducers/userReducer";
 export const initialState: InitialStateUserContext = {
   themeMode: 'light',
   userDetails: {
-    id: "",
+    _id: "",
     name: "",
     lastName: "",
     userName: "",
     email: "",
     phoneNumber: "",
     profilePhotoUrl: "",
+    createdAt: "",
   },
 };
 

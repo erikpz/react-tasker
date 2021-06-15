@@ -11,13 +11,14 @@ interface APIResponse {
 }
 
 interface UserDetailsContext {
-  id: string;
+  _id: string;
   name: string;
   lastName: string;
   userName: string;
   email: string;
   phoneNumber: string;
   profilePhotoUrl: string;
+  createdAt: string;
 }
 
 interface InitialStateUserContext {

@@ -8,11 +8,11 @@ const AuthRoot: FC = () => {
   const classes = useStyles();
   return (
     <div className={classes.authRoot}>
-        <Routes>
-          <Route path="/sign-in" element={<LoginPage />} />
-          <Route path="/sign-up" element={<RegisterPage />} />
-          <Navigate to="/404" />
-        </Routes>
+      <Routes>
+        <Route path="/sign-in" element={<LoginPage />} />
+        <Route path="/sign-up" element={<RegisterPage />} />
+        <Route path="*" element={<Navigate to="/404" />} />
+      </Routes>
     </div>
   );
 };
