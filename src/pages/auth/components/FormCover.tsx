@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, makeStyles, Theme, Typography } from "@material-ui/core";
 import { useLocation } from "react-router";
 
 export const FormCover = () => {
