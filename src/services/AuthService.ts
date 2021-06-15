@@ -19,4 +19,12 @@ export class AuthService {
       hasAuthToken: true,
     });
   }
+
+  async createUser(body: InputsRegister): Promise<APIResponse> {
+    return GenericService.post({
+      endpoint: "/auth/create-user",
+      body,
+      hasAuthToken: true,
+    });
+  }
 }

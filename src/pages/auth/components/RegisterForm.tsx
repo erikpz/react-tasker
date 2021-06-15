@@ -31,14 +31,21 @@ export const RegisterForm = () => {
     formState: { errors },
   } = useForm<InputsRegister>();
 
-  const handleLogin = async (formData: InputsRegister) => {
+  const handleRegister = async (formData: InputsRegister) => {
     setloading(true);
     const authService = AuthService.getInstance();
-    const response = await authService.login(formData);
+    const response = await authService.createUser(formData);
     console.log(response);
     if (response.ok) {
       localStorage.setItem("token", response.data.data.token);
-      navigate("/");
+      Swal.fire({
+        title: "Registrado!",
+        text: "Te has registrado correctamente",
+        icon: "success",
+        confirmButtonText: "ok",
+      }).then(() => {
+        navigate("/auth/sign-in");
+      });
     } else {
       Swal.fire({
         title: "Algo salió mal.",
@@ -160,7 +167,7 @@ export const RegisterForm = () => {
             variant="contained"
             className={classes.loginButton}
             type="submit"
-            onClick={handleSubmit(handleLogin)}
+            onClick={handleSubmit(handleRegister)}
           >
             {loading ? <CircularProgress size={20} /> : "Registrarse"}
           </Button>
