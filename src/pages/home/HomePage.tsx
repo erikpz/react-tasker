@@ -55,8 +55,8 @@ export const HomePage = () => {
   return (
     <>
       <Box className={classes.homeContainer}>
-        <Typography variant="h3" style={{ fontWeight: 300 }}>
-          Tareas
+        <Typography variant="h3" style={{ fontWeight: 500, marginBottom: 20 }}>
+          Organizador
         </Typography>
         {loading ? (
           <Box className={classes.spinnerContainer}>
@@ -70,13 +70,17 @@ export const HomePage = () => {
                 item
                 xs={12}
                 sm={4}
-                style={{
+                justify="center"
+                alignContent="flex-start"
+                spacing={2}
+                /* style={{
                   backgroundColor: "lightcoral",
-                }}
+                }} */
               >
                 <Typography
                   variant="subtitle2"
-                  style={{ margin: "10px 0 20px 0" }}
+                  align="center"
+                  style={{ margin: "10px auto 20px auto" }}
                 >
                   Nuevas
                 </Typography>
@@ -94,13 +98,17 @@ export const HomePage = () => {
                 item
                 xs={12}
                 sm={4}
-                style={{
+                justify="center"
+                alignContent="flex-start"
+                spacing={2}
+                /* style={{
                   backgroundColor: "lightcoral",
-                }}
+                }} */
               >
                 <Typography
+                  align="center"
                   variant="subtitle2"
-                  style={{ margin: "10px 0 20px 0" }}
+                  style={{ margin: "10px auto 20px auto" }}
                 >
                   En proceso
                 </Typography>
@@ -118,13 +126,17 @@ export const HomePage = () => {
                 item
                 xs={12}
                 sm={4}
-                style={{
+                justify="center"
+                alignContent="flex-start"
+                spacing={2}
+                /* style={{
                   backgroundColor: "lightcoral",
-                }}
+                }} */
               >
                 <Typography
+                  align="center"
                   variant="subtitle2"
-                  style={{ margin: "10px 0 20px 0" }}
+                  style={{ margin: "10px auto 20px auto", maxHeight: 20 }}
                 >
                   Completadas
                 </Typography>
@@ -158,7 +170,7 @@ export const HomePage = () => {
 
 const useStyles = makeStyles((theme: Theme) => ({
   homeContainer: {
-    backgroundColor: "lightblue",
+    /* backgroundColor: "lightblue", */
     minHeight: "100%",
   },
   fab: {

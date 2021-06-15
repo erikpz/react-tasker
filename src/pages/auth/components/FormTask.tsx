@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -17,19 +17,24 @@ import Swal from "sweetalert2";
 import { UserContext } from "../../../contexts/UserContext";
 import { useNavigate } from "react-router";
 import { unsetUser } from "../../../contexts/actions/userActions";
-import { formatStatus } from "../../../utils/helpers";
+import { formatStatus, formatStatusReverse } from "../../../utils/helpers";
 
 interface FormTaskProps {
   type: string;
   onClose: () => void;
   onFetch: () => Promise<void>;
-  task?: any;
+  task?: Task;
 }
 
 export const FormTask: FC<FormTaskProps> = (props) => {
   const classes = useStyles();
   const { type, onClose, onFetch, task } = props;
   console.log(task);
+  const def = {
+    title: task?.title,
+    description: task?.description,
+    status: formatStatusReverse(task?.status as any),
+  };
   const [loading, setloading] = useState(false);
   const userctx = useContext(UserContext);
   const navigate = useNavigate();
@@ -47,10 +52,10 @@ export const FormTask: FC<FormTaskProps> = (props) => {
     if (type === "new") {
       response = await taskService.createTask({
         ...dataForm,
-        status: 'new',
+        status: "new",
       });
     } else {
-      response = await taskService.updateTask(task._id as string, {
+      response = await taskService.updateTask(task?._id as string, {
         ...dataForm,
         status: formatStatus(dataForm.status as any),
       });
@@ -85,6 +90,13 @@ export const FormTask: FC<FormTaskProps> = (props) => {
     setloading(false);
     console.log(response);
   };
+
+  useEffect(() => {
+    return () => {
+      setloading(false);
+    };
+  }, []);
+
   return (
     <Box className={classes.formContainer}>
       <IconButton
