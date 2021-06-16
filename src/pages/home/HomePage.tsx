@@ -98,7 +98,7 @@ export const HomePage = () => {
                   variant="subtitle2"
                   align="center"
                   style={{
-                    margin: "10px auto 20px auto",
+                    margin: "20px auto",
                     color: theme.palette.grey[500],
                   }}
                 >
@@ -129,7 +129,7 @@ export const HomePage = () => {
                   align="center"
                   variant="subtitle2"
                   style={{
-                    margin: "10px auto 20px auto",
+                    margin: "20px auto",
                     color: theme.palette.grey[500],
                   }}
                 >
@@ -160,7 +160,7 @@ export const HomePage = () => {
                   align="center"
                   variant="subtitle2"
                   style={{
-                    margin: "10px auto 20px auto",
+                    margin: "20px auto",
                     maxHeight: 20,
                     color: theme.palette.grey[500],
                   }}

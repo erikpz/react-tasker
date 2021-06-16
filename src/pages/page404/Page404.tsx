@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link as RouterLink } from "react-router-dom";
 import { varBounce, varBounceIn } from "../../components/variants";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Box, Button, Typography, Container } from "@material-ui/core"; /* 
 import illust from "../../../public/static/illustrations/illustration_404.svg" */
 import MotionContainer from "../../components/MotionContainer";
@@ -30,13 +30,19 @@ const useStyles = makeStyles((theme) => ({
 
 function Page404View() {
   const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <div className={classes.root}>
       <header className={classes.header}>
         <RouterLink
           to="/"
-          style={{ textDecoration: "none", fontSize: 30, color: "black" }}
+          style={{
+            textDecoration: "none",
+            fontSize: 25,
+            fontStyle: "oblique",
+            color: theme.palette.text.primary,
+          }}
         >
           TASKER.
         </RouterLink>

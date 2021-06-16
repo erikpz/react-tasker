@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   Box,
@@ -24,12 +24,15 @@ const TopBar = (props: any) => {
   const { onOpenNav } = props;
   const classes = useStyles();
   const theme = useTheme();
-  const { selectMode } = useSettings();
+  const { selectMode, themeMode } = useSettings();
   const [toggled, setToggled] = useState(false);
   const handleToggleTheme = () => {
     setToggled((s) => !s);
     selectMode(toggled ? "light" : "dark");
   };
+  useEffect(() => {
+    setToggled(themeMode === "dark");
+  }, []);
   return (
     <AppBar className={classes.rootAppbar} elevation={0}>
       <Toolbar className={classes.toolbar}>
@@ -56,7 +59,7 @@ const TopBar = (props: any) => {
         </Box>
         <Box style={{ flexGrow: 1 }}></Box>
         <Box className={classes.rightMenu}>
-          <Box style={{ width: 100}}>
+          <Box style={{ width: 100 }}>
             <SwitchTheme toggled={toggled} onClick={handleToggleTheme} />
           </Box>
           <Account />
