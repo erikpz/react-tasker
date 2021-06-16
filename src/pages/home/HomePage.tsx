@@ -7,6 +7,7 @@ import {
   makeStyles,
   Theme,
   Typography,
+  useTheme,
 } from "@material-ui/core";
 import { TodoCard } from "../auth/components/TodoCard";
 import { TaskService } from "../../services/TaskService";
@@ -21,6 +22,7 @@ export const HomePage = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const userctx = useContext(UserContext);
+  const theme = useTheme();
   const [openNew, setopenNew] = useState(false);
   const [loading, setloading] = useState(false);
   const [taskList, settaskList] = useState<Task[]>([]);
@@ -55,13 +57,28 @@ export const HomePage = () => {
   return (
     <>
       <Box className={classes.homeContainer}>
-        <Typography variant="h3" style={{ fontWeight: 500, marginBottom: 20 }}>
+        <Typography
+          variant="h3"
+          style={{
+            fontWeight: 500,
+            marginBottom: 20,
+            color: theme.palette.grey[700],
+          }}
+        >
           Organizador
         </Typography>
         {loading ? (
           <Box className={classes.spinnerContainer}>
             <CircularProgress color="primary" size={50} />
           </Box>
+        ) : taskList.length === 0 ? (
+          <Typography
+            variant="h5"
+            align="center"
+            style={{ marginTop: 100, color: theme.palette.grey[500] }}
+          >
+            Aún no tienes tareas. Empieza a organizarte creando una.
+          </Typography>
         ) : (
           <Box>
             <Grid container spacing={1}>
@@ -80,7 +97,10 @@ export const HomePage = () => {
                 <Typography
                   variant="subtitle2"
                   align="center"
-                  style={{ margin: "10px auto 20px auto" }}
+                  style={{
+                    margin: "10px auto 20px auto",
+                    color: theme.palette.grey[500],
+                  }}
                 >
                   Nuevas
                 </Typography>
@@ -108,7 +128,10 @@ export const HomePage = () => {
                 <Typography
                   align="center"
                   variant="subtitle2"
-                  style={{ margin: "10px auto 20px auto" }}
+                  style={{
+                    margin: "10px auto 20px auto",
+                    color: theme.palette.grey[500],
+                  }}
                 >
                   En proceso
                 </Typography>
@@ -136,7 +159,11 @@ export const HomePage = () => {
                 <Typography
                   align="center"
                   variant="subtitle2"
-                  style={{ margin: "10px auto 20px auto", maxHeight: 20 }}
+                  style={{
+                    margin: "10px auto 20px auto",
+                    maxHeight: 20,
+                    color: theme.palette.grey[500],
+                  }}
                 >
                   Completadas
                 </Typography>
@@ -196,7 +223,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
   },
   formTask: {
-    width: 500,
+    maxWidth: 500,
     margin: "auto",
   },
 }));

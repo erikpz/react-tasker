@@ -164,7 +164,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: 15,
   },
   formTask: {
-    width: 500,
+    maxWidth: 500,
     margin: "auto",
   },
 }));

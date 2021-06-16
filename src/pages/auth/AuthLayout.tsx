@@ -1,6 +1,7 @@
 import React, { FC, Children } from "react";
 import { Box, Grid, Hidden, makeStyles, Theme } from "@material-ui/core";
 import { useLocation } from "react-router";
+import Scrollbars from "../../components/Scrollbars";
 
 export const AuthLayout: FC<{ children: any }> = (props) => {
   const classes = useStyles();
@@ -13,7 +14,7 @@ export const AuthLayout: FC<{ children: any }> = (props) => {
         <Grid
           container
           className={classes.loginPage}
-          style={{ overflowY: "auto" }}
+          /* style={{ overflowY: "auto" }} */
         >
           <Grid item xs={12} sm={6}>
             {childs[0]}
@@ -39,9 +40,9 @@ export const AuthLayout: FC<{ children: any }> = (props) => {
             {childs[0]}
           </Grid>
         </Hidden>
-        <Grid item xs={12} sm={6}>
-          {childs[1]}
-        </Grid>
+          <Grid item xs={12} sm={6}>
+            {childs[1]}
+          </Grid>
       </Grid>
     </Box>
   );
@@ -58,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   loginPage: {
     width: "90%",
     height: "90%",
-    maxWidth:1200,
+    maxWidth: 1200,
     boxShadow: theme.shadows[19],
     borderRadius: theme.shape.borderRadius,
     overflow: "hidden",

@@ -61,7 +61,7 @@ export const RegisterForm = () => {
   return (
     <form className={classes.formContainer}>
       <Grid container spacing={2} style={{ height: "100%" }}>
-        <Grid item xs={12} /* style={{ backgroundColor: "lightcoral" }} */>
+        <Grid item xs={12}>
           <Typography variant="h3" align="center" style={{ marginBottom: 20 }}>
             Regístrate
           </Typography>
@@ -200,7 +200,6 @@ export const RegisterForm = () => {
 
 const useStyles = makeStyles((theme: Theme) => ({
   formContainer: {
-    height: "100%",
     padding: 50,
     display: "flex",
     flexDirection: "column",

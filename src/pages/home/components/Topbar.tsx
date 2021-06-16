@@ -18,7 +18,7 @@ const APPBAR_MOBILE = 64;
 const APPBAR_DESKTOP = 92;
 
 const TopBar = (props: any) => {
-  const { onOpenNav } = props
+  const { onOpenNav } = props;
   const classes = useStyles();
   return (
     <AppBar className={classes.rootAppbar} elevation={0}>
@@ -34,7 +34,9 @@ const TopBar = (props: any) => {
           </IconButton>
         </Hidden> */}
         <Box>
-          <Typography variant='h5' style={{fontStyle:'oblique'}}>TASKER.</Typography>
+          <Typography variant="h5" style={{ fontStyle: "oblique" }}>
+            TASKER.
+          </Typography>
         </Box>
         <Box style={{ flexGrow: 1 }}></Box>
         <Box className={classes.rightMenu}>
@@ -43,13 +45,14 @@ const TopBar = (props: any) => {
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 const useStyles = makeStyles((theme: Theme) => ({
   rootAppbar: {
     boxShadow: "none",
     backdropFilter: "blur(8px)",
     backgroundColor: alpha(theme.palette.background.default, 0.7),
+    zIndex: 1000,
     /* [theme.breakpoints.up("lg")]: {
       paddingLeft: DRAWER_WIDTH,
     }, */

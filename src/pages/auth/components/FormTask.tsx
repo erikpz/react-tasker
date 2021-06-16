@@ -110,7 +110,7 @@ export const FormTask: FC<FormTaskProps> = (props) => {
         variant="subtitle1"
         style={{ fontWeight: 500, fontSize: 20, marginBottom: 20 }}
       >
-        {type === "new" ? "Agrega un nueva tarea" : "Actualiza la tarea"}
+        {type === "new" ? "Crear tarea" : "Actualizar tarea"}
       </Typography>
       <TextField
         fullWidth

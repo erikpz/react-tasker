@@ -4,6 +4,7 @@ import {
   Button,
   CircularProgress,
   Grid,
+  Hidden,
   IconButton,
   InputAdornment,
   makeStyles,
@@ -54,8 +55,19 @@ export const LoginForm = () => {
   return (
     <form className={classes.formContainer}>
       <Grid container spacing={2}>
+        <Hidden smUp>
+          <Grid item xs={12}>
+            <Typography
+              variant="h1"
+              align="center"
+              style={{ marginBottom: 20, fontStyle: "oblique" }}
+            >
+              TASKER.
+            </Typography>
+          </Grid>
+        </Hidden>
         <Grid item xs={12} /* style={{ backgroundColor: "lightcoral" }} */>
-          <Typography variant="h3" align="center" style={{ marginBottom: 20 }}>
+          <Typography variant="h3" align="center" style={{ marginBottom: 20, color:theme.palette.grey[700] }}>
             Inicia Sesión
           </Typography>
         </Grid>
