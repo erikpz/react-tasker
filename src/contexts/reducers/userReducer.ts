@@ -27,7 +27,7 @@ export const userReducer = (
     case TOGGLE_MODE:
       return {
         ...state,
-        mode: action.payload,
+        themeMode: action.payload,
       };
     default:
       return state;

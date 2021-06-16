@@ -13,7 +13,7 @@ function useSettings() {
   );
 
   const handleChangeTheme = useCallback(
-    (event) => usrContext.dispatch(toggleMode(event.target.value)),
+    (value) => usrContext.dispatch(toggleMode(value)),
     [usrContext.dispatch]
   );
 

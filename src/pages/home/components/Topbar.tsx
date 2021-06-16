@@ -1,5 +1,5 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from "react";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   Box,
   AppBar,
@@ -12,6 +12,9 @@ import {
 import { alpha } from "../../../utils/helpers";
 import { Menu } from "@material-ui/icons";
 import Account from "./Account";
+import clsx from "clsx";
+import { SwitchTheme } from "./SwitchTheme";
+import useSettings from "../../../hooks/useSettings";
 
 const DRAWER_WIDTH = 280;
 const APPBAR_MOBILE = 64;
@@ -20,6 +23,13 @@ const APPBAR_DESKTOP = 92;
 const TopBar = (props: any) => {
   const { onOpenNav } = props;
   const classes = useStyles();
+  const theme = useTheme();
+  const { selectMode } = useSettings();
+  const [toggled, setToggled] = useState(false);
+  const handleToggleTheme = () => {
+    setToggled((s) => !s);
+    selectMode(toggled ? "light" : "dark");
+  };
   return (
     <AppBar className={classes.rootAppbar} elevation={0}>
       <Toolbar className={classes.toolbar}>
@@ -34,12 +44,21 @@ const TopBar = (props: any) => {
           </IconButton>
         </Hidden> */}
         <Box>
-          <Typography variant="h5" style={{ fontStyle: "oblique" }}>
+          <Typography
+            variant="h5"
+            style={{
+              fontStyle: "oblique",
+              color: theme.palette.text.primary,
+            }}
+          >
             TASKER.
           </Typography>
         </Box>
         <Box style={{ flexGrow: 1 }}></Box>
         <Box className={classes.rightMenu}>
+          <Box style={{ width: 100}}>
+            <SwitchTheme toggled={toggled} onClick={handleToggleTheme} />
+          </Box>
           <Account />
         </Box>
       </Toolbar>
